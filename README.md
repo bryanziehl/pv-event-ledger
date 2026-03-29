@@ -1,71 +1,63 @@
-# Prima Veritas Core
+PV-Event-Ledger
+What This Repository Is
 
-## What This Core Is
-
-The Prima Veritas Core is an event-ledger engine for reconstructing verifiable operational timelines.
+A reference implementation of event sequencing and hash-linked ledgers for reconstructing verifiable operational history.
 
 It transforms structured inputs into:
 
-- atomic events  
-- ordered hash-chain ledgers  
-- replayable, verifiable artifacts  
+atomic events
+ordered hash-chain ledgers
+replayable, verifiable artifacts
 
 It does this without:
 
-- interpretation  
-- inference  
-- analytics  
-- data repair  
-- heuristics  
+interpretation
+inference
+analytics
+data repair
+heuristics
 
-The core preserves structure and order.  
+The engine preserves structure and order.
 It does not create meaning.
 
----
-
-## What This Core Is For
+What This Repository Is For
 
 Operational systems often produce records that:
 
-- arrive out of order  
-- contain duplication  
-- drift across systems  
-- disagree in formatting  
+arrive out of order
+contain duplication
+drift across systems
+disagree in formatting
 
-The Prima Veritas Core reconstructs a single reproducible event sequence from those records.
+The PV-Event-Ledger reconstructs a single reproducible event sequence from those records.
 
 It is intended for:
 
-- post-incident reconstruction  
-- audit scenarios  
-- compliance review  
-- dispute analysis  
-- system reconciliation  
+post-incident reconstruction
+audit scenarios
+compliance review
+dispute analysis
+system reconciliation
 
 It establishes what was recorded and in what order — nothing more.
 
----
+Reproducibility Contract
 
-## Reproducibility Contract
+The system guarantees:
 
-The core guarantees:
-
-- identical input → identical output  
-- across machines  
-- across operators  
-- across time  
+identical input → identical output
+across machines
+across operators
+across time
 
 Hashing is canonical and insertion-order independent.
 
 If reproducibility cannot be preserved, execution must fail.
 
----
+What This Repository Contains
 
-## What This Repository Contains
+This repository contains the PV-Event-Ledger system:
 
-This repository contains only the core event-ledger engine:
-
-```
 00_SYSTEM
 01_INGEST
 02_NORMALIZE
@@ -76,108 +68,91 @@ This repository contains only the core event-ledger engine:
 07_ERRORS
 08_CLI
 09_TESTS
-```
 
-It does **not** contain:
+It does not contain:
 
-- client datasets  
-- domain casework  
-- reporting layers  
-- analytics engines  
-- projections beyond replay  
+client datasets
+domain casework
+reporting layers
+analytics engines
+projections beyond replay
 
-Those layers belong outside the core.
+Those layers belong outside the system.
 
----
-
-## Running Core Tests
+Running Ledger Tests
 
 All tests are self-contained and reproducible.
 
 From the root directory:
 
-```bash
 node 09_TESTS/canonical_hash_insertion_order.test.mjs
 node 09_TESTS/determinism.test.mjs
 node 09_TESTS/micro_tamper_detection.test.mjs
-```
 
-If all tests pass, the core is sealed and reproducible.
+If all tests pass, the engine is sealed and reproducible.
 
----
-
-## Operator Notes (Non-Technical)
+Operator Notes (Non-Technical)
 
 You do not need programming knowledge to run tests.
 
 Open PowerShell:
 
-1. Click Start  
-2. Type **PowerShell**  
-3. Press Enter  
+Click Start
+Type PowerShell
+Press Enter
 
-Navigate to the core directory:
+Navigate to the system directory:
 
-```bash
-cd C:\PRIMA_VERITAS_CORE
-```
+cd C:\PV_EVENT_LEDGER
 
 Run tests using the commands above.
 
-No installation required.  
+No installation required.
 No configuration required.
 
----
+Design Principles
 
-## Design Principles
+The engine:
 
-The core:
+preserves ambiguity
+refuses heuristic correction
+records missing data as missing
+surfaces conflicts without resolving them
+fails loudly instead of guessing
 
-- preserves ambiguity  
-- refuses heuristic correction  
-- records missing data as missing  
-- surfaces conflicts without resolving them  
-- fails loudly instead of guessing  
+Interpretation must occur outside the system.
 
-Interpretation must occur outside the core.
-
----
-
-## Canonical Contract
+Canonical Contract
 
 The canonical hash attests to:
 
-- `kernel_version`
-- `spec_version`
-- `entry_count`
-- `final_entry_hash`
+system_version
+spec_version
+entry_count
+final_entry_hash
 
-It does **not** attest to:
+It does not attest to:
 
-- reports  
-- summaries  
-- legal arguments  
-- analytics  
-- projections  
+reports
+summaries
+legal arguments
+analytics
+projections
 
 That boundary is intentional.
 
----
-
-## Governance
+Governance
 
 See:
 
-- `KERNEL_CHARTER.md`
-- `SYSTEM_MAP.md`
-- `HEADER_GUIDANCE.md`
+SYSTEM_CHARTER.md
+SYSTEM_MAP.md
+HEADER_GUIDANCE.md
 
 These documents define scope, invariants, and change control.
 
----
+Status
 
-## Status
-
-Core Version: 1.0.0  
-Status: Reproducible core sealed  
+System Version: 1.0.0
+Status: Reproducible system sealed
 Scope: Domain-agnostic
