@@ -1,4 +1,4 @@
-# PV Kernel — Freeze Snapshot (Normative)
+# PRIMA VERITAS KERNEL — FREEZE SNAPSHOT (v1.0.0)
 
 This file defines the frozen public contracts of the Prima Veritas Kernel.
 Any change to shapes or hashing semantics here is BREAKING and requires:

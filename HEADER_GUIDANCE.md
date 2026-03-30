@@ -14,15 +14,15 @@ They define what a file is allowed to do, and—more importantly—what it must 
 
 This guidance applies to:
 
-- all kernel modules (`00–08`)
-- all CLI entrypoints
-- any file whose behavior affects canonical hashes or replay outcomes
+* all kernel modules (`00–08`)
+* all CLI entrypoints
+* any file whose behavior affects canonical hashes or replay outcomes
 
 This guidance does **not** apply to:
 
-- dataset materializers (`10_DATASETS/*/run.mjs`)
-- reports, templates, or outreach artifacts
-- non-kernel tooling
+* dataset materializers (`10_DATASETS/*/run.mjs`)
+* reports, templates, or outreach artifacts
+* non-kernel tooling
 
 ---
 
@@ -42,9 +42,9 @@ Example:
 
 Responsibility must be:
 
-- singular
-- bounded
-- non-overlapping with adjacent layers
+* singular
+* bounded
+* non-overlapping with adjacent layers
 
 ---
 
@@ -54,12 +54,12 @@ An explicit list of forbidden behaviors.
 
 Must include language equivalent to:
 
-- no randomness
-- no timestamps
-- no environment-dependent behavior
-- no heuristics or inference
-- fixed ordering only
-- hash scope is explicit and stable
+* no randomness
+* no timestamps
+* no environment-dependent behavior
+* no heuristics or inference
+* fixed ordering only
+* hash scope is explicit and stable
 
 If a file contributes to a hash, it must say so.
 
@@ -71,11 +71,11 @@ What this file will **not** attempt, even if inputs are messy or incomplete.
 
 Examples:
 
-- will not guess missing fields
-- will not auto-correct malformed data
-- will not silently coerce types
-- will not clean client dysfunction beyond explicit rules
-- will not interpret meaning or intent
+* will not guess missing fields
+* will not auto-correct malformed data
+* will not silently coerce types
+* will not clean client dysfunction beyond explicit rules
+* will not interpret meaning or intent
 
 Refusals are mandatory.
 
@@ -89,10 +89,10 @@ How changes to this file must be treated.
 
 Examples:
 
-- “Changes here are breaking.”
-- “Inputs/outputs must remain byte-stable.”
-- “Any behavior change requires version bump + replay diff.”
-- “Hash-affecting changes invalidate prior artifacts.”
+* “Changes here are breaking.”
+* “Inputs/outputs must remain byte-stable.”
+* “Any behavior change requires version bump + replay diff.”
+* “Hash-affecting changes invalidate prior artifacts.”
 
 If the file affects determinism, the header must say how.
 
@@ -102,40 +102,40 @@ If the file affects determinism, the header must say how.
 
 These are **non-binding and refactorable**:
 
-- version numbers
-- decorative separators
-- ASCII art
-- historical notes
-- contributor notes
-- license repetition (handled elsewhere)
+* version numbers
+* decorative separators
+* ASCII art
+* historical notes
+* contributor notes
+* license repetition (handled elsewhere)
 
 ---
 
 ## Style Rules (lightweight)
 
-- comment style does not matter
-- formatting does not matter
-- order of sections does not matter
-- clarity > verbosity
-- explicit refusals > clever explanations
+* comment style does not matter
+* formatting does not matter
+* order of sections does not matter
+* clarity > verbosity
+* explicit refusals > clever explanations
 
 ---
 
 ## Kernel-Specific Rules
 
-- kernel files do not contain dataset-specific logic
-- kernel files do not “help” the user
-- kernel files fail loudly instead of guessing
-- kernel files assume adversarial inputs
-- kernel files favor replayability over convenience
-- kernel files do not embed interpretation or policy
+* kernel files do not contain dataset-specific logic
+* kernel files do not “help” the user
+* kernel files fail loudly instead of guessing
+* kernel files assume adversarial inputs
+* kernel files favor replayability over convenience
+* kernel files do not embed interpretation or policy
 
 ---
 
 ## Operator Prompt (reuse verbatim)
 
-“Operate under the Prima Veritas Kernel Header Guidance.  
-Enforce strict determinism, explicit refusals, and narrow responsibility.  
+“Operate under the Prima Veritas Kernel Header Guidance.
+Enforce strict determinism, explicit refusals, and narrow responsibility.
 Do not introduce heuristics, cleanup logic, interpretation, or implicit behavior.”
 
 ---
