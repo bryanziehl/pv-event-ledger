@@ -1,62 +1,92 @@
-PV-Event-Ledger
-What This Repository Is
+# PV Event Ledger
 
-A reference implementation of event sequencing and hash-linked ledgers for reconstructing verifiable operational history.
+Reconstructs and sequences operational events into a reproducible, verifiable event ledger.
 
-It transforms structured inputs into:
+Transforms structured inputs into atomic events, ordered hash-chain ledgers, and replayable, verifiable artifacts.
 
-atomic events
-ordered hash-chain ledgers
-replayable, verifiable artifacts
+Identical input always produces identical output across machines, operators, and time.
 
-It does this without:
+---
 
-interpretation
-inference
-analytics
-data repair
-heuristics
+## Repository Purpose
 
-The engine preserves structure and order.
-It does not create meaning.
+This repository contains the reference implementation of the Prima Veritas Event Ledger.
 
-What This Repository Is For
+It is used for:
 
-Operational systems often produce records that:
+* event sequencing
+* reproducible ledger construction
+* operational history reconstruction
 
-arrive out of order
-contain duplication
-drift across systems
-disagree in formatting
+It is not a full Prima Veritas system.
 
-The PV-Event-Ledger reconstructs a single reproducible event sequence from those records.
+The production system includes additional infrastructure, validation layers, and operational components not included here.
 
-It is intended for:
+---
 
-post-incident reconstruction
-audit scenarios
-compliance review
-dispute analysis
-system reconciliation
+## What It Does
 
-It establishes what was recorded and in what order — nothing more.
+Transforms structured inputs into:
 
-Reproducibility Contract
+* atomic events
+* ordered hash-chain ledgers
+* replayable, verifiable artifacts
 
-The system guarantees:
+The system:
 
-identical input → identical output
-across machines
-across operators
-across time
+* preserves structure and order
+* does not create meaning
+* does not perform interpretation or inference
+
+---
+
+## Design Constraints
+
+The system operates without:
+
+* interpretation
+* inference
+* analytics
+* data repair
+* heuristics
+
+Ambiguity is preserved.  
+Conflicts are surfaced.  
+Missing data remains missing.  
+
+If reproducibility cannot be preserved, execution fails.
+
+---
+
+## Guarantees
+
+Identical input produces:
+
+* identical event ordering
+* identical ledger structure
+* identical hash outputs
 
 Hashing is canonical and insertion-order independent.
 
-If reproducibility cannot be preserved, execution must fail.
+---
 
-What This Repository Contains
+## What It Solves
 
-This repository contains the PV-Event-Ledger system:
+Operational systems often produce records that:
+
+* arrive out of order
+* contain duplication
+* drift across systems
+* disagree in formatting
+
+The PV Event Ledger reconstructs a single reproducible event sequence from those records.
+
+It establishes what was recorded and in what order — nothing more.
+
+---
+
+## Repository Structure
+
 
 00_SYSTEM
 01_INGEST
@@ -69,50 +99,54 @@ This repository contains the PV-Event-Ledger system:
 08_CLI
 09_TESTS
 
-It does not contain:
 
-client datasets
-domain casework
-reporting layers
-analytics engines
-projections beyond replay
+---
 
-Those layers belong outside the system.
+## What It Does Not Include
 
-Running Ledger Tests
+* client datasets
+* domain casework
+* reporting layers
+* analytics engines
+* projections beyond replay
+
+These layers belong outside the system.
+
+---
+
+## Running Tests
 
 All tests are self-contained and reproducible.
 
-From the root directory:
+From the repository root:
 
+```bash
 node 09_TESTS/canonical_hash_insertion_order.test.mjs
 node 09_TESTS/determinism.test.mjs
 node 09_TESTS/micro_tamper_detection.test.mjs
 
-If all tests pass, the engine is sealed and reproducible.
+If all tests pass, the system is sealed and reproducible.
 
-Operator Notes (Non-Technical)
+Operator Notes
 
-You do not need programming knowledge to run tests.
+No programming knowledge is required.
 
 Open PowerShell:
 
-Click Start
-Type PowerShell
-Press Enter
+Start → type “PowerShell” → Enter
 
-Navigate to the system directory:
+Navigate to the repository directory:
 
-cd C:\PV_EVENT_LEDGER
+cd C:\pv_event_ledger
 
-Run tests using the commands above.
+Run the test commands above.
 
 No installation required.
 No configuration required.
 
 Design Principles
 
-The engine:
+The system:
 
 preserves ambiguity
 refuses heuristic correction
@@ -126,7 +160,7 @@ Canonical Contract
 
 The canonical hash attests to:
 
-system_version
+kernel_version
 spec_version
 entry_count
 final_entry_hash
@@ -145,7 +179,7 @@ Governance
 
 See:
 
-SYSTEM_CHARTER.md
+KERNEL_CHARTER.md
 SYSTEM_MAP.md
 HEADER_GUIDANCE.md
 
@@ -153,6 +187,6 @@ These documents define scope, invariants, and change control.
 
 Status
 
-System Version: 1.0.0
+Version: 1.0.0
 Status: Reproducible system sealed
 Scope: Domain-agnostic
