@@ -120,7 +120,6 @@ All tests are self-contained and reproducible.
 
 From the repository root:
 
-```bash
 node 09_TESTS/canonical_hash_insertion_order.test.mjs
 node 09_TESTS/determinism.test.mjs
 node 09_TESTS/micro_tamper_detection.test.mjs
